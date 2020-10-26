@@ -1,13 +1,12 @@
-const path = require('path');
-var prod = process.env.NODE_ENV === 'production';
+const path = require('path')
+var prod = process.env.NODE_ENV === 'production'
 
 module.exports = {
   wpyExt: '.wpy',
   eslint: true,
   cliLogs: !prod,
-  static: ['static'],
-  build: {
-  },
+  static: ['./src/assets'],
+  build: {},
   resolve: {
     alias: {
       counter: path.join(__dirname, 'src/components/counter'),
@@ -35,4 +34,3 @@ module.exports = {
     noPromiseAPI: ['createSelectorQuery']
   }
 }
-
