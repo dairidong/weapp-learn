@@ -17,8 +17,6 @@ wepy.use(promisify)
 
 wepy.app({
   async onLaunch() {
-    const res = await wepy.wx.login()
-    console.log(res)
   },
 
   methods: {}
