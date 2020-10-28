@@ -5,7 +5,8 @@
     <div class="page__bd">
       <div class="weui-panel weui-panel_access">
         <div class="weui-panel__hd" v-if="isLoggedIn">
-          已登录
+          已登录 name: {{ user.name }}
+          <button type="warn" v-on:click="logout">退出登录</button>
         </div>
         <div v-else>
           <a class="weui-cell weui-cell_access" url="/pages/auth/login">
@@ -29,7 +30,16 @@ wepy.page({
     setNavigationBarTitleText: '我的'
   },
   computed: {
-    ...mapGetters(['isLoggedIn'])
+    ...mapGetters(['user', 'isLoggedIn'])
+  },
+  methods: {
+    // 退出
+    async logout() {
+      try {
+        await this.$store.dispatch('logout')
+      } catch (err) {
+      }
+    }
   }
 })
 </script>

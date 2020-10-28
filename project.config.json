@@ -32,5 +32,7 @@
   "appid": "wx5a76075d3394ab19",
   "projectname": "larabbs-weapp",
   "miniprogramRoot": "weapp/",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
   "condition": {}
 }
