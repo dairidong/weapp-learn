@@ -28,13 +28,10 @@ const actions = {
     const loginData = await wepy.wx.login()
     params.code = loginData.code
 
-    console.log(1)
     const authResponse = await login(params)
-    console.log(2)
 
     commit('setToken', authResponse.data)
     auth.setToken(authResponse.data)
-    console.log(3)
 
     dispatch('getUser')
   },
