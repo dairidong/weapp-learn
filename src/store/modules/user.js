@@ -53,7 +53,7 @@ const actions = {
     await logout(state.accessToken)
 
     // 清空 storage
-    auth.logout()
+    await auth.logout()
     commit('resetState')
   },
   async register({ dispatch }, params = {}) {
