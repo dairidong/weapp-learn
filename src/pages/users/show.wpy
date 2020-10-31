@@ -1,25 +1,25 @@
 <style lang="less">
-  .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .avatar {
-    width: 80px;
-    height: 80px;
-    display: block;
-    border-radius: 50%;
-  }
+.avatar {
+  width: 80px;
+  height: 80px;
+  display: block;
+  border-radius: 50%;
+}
 
-  .logout {
-    margin-top: 30px;
-  }
+.logout {
+  margin-top: 30px;
+}
 
-  .introduction {
-    font-size: 13px;
-    color: #888888;
-  }
+.introduction {
+  font-size: 13px;
+  color: #888888;
+}
 </style>
 <template>
   <div class="page">
@@ -28,7 +28,7 @@
         <div class="weui-cell">
           <div class="weui-cell__bd ">
             <div class="center">
-              <image class="avatar" src="{{ user.avatar }}"/>
+              <image class="avatar" src="{{ user.avatar }}" />
             </div>
             <div class="center">{{ user.name }}</div>
             <div class="page__desc center" v-if="user.introduction">{{ user.introduction }}</div>
@@ -52,7 +52,7 @@
           </div>
           <div class="weui-cell__ft weui-cell__ft_in-access"></div>
         </a>
-        <a class="weui-cell weui-cell_access" url="">
+        <a class="weui-cell weui-cell_access" url="/pages/replies/user-index?id={{ user.id }}">
           <div class="weui-cell__bd" url="">
             <div class="weui-cell__bd">Ta 的回复</div>
           </div>
@@ -63,11 +63,11 @@
   </div>
 </template>
 <config>
-  {
-    usingComponents: {
-      "datetime-diff": "~@/components/datetime-diff"
-    }
+{
+  usingComponents: {
+    "datetime-diff": "~@/components/datetime-diff"
   }
+}
 </config>
 <script>
 import wepy from '@wepy/core'
