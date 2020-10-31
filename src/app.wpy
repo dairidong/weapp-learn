@@ -16,10 +16,21 @@ wepy.use(vuex)
 wepy.use(promisify)
 
 wepy.app({
+  store: require('./store').default,
   async onLaunch() {
+    this.$store = this.$options.store
+    this.updateUnreadCount()
+
+    setInterval(() => {
+      this.updateUnreadCount()
+    }, 60000)
   },
 
-  methods: {}
+  methods: {
+    async updateUnreadCount() {
+      await this.$store.dispatch('updateUnreadCount')
+    }
+  }
 })
 </script>
 <config>
