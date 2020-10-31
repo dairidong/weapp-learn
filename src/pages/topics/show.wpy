@@ -1,37 +1,37 @@
 <style lang="less">
-  .page {
-    background-color: #FFFFFF;
-  }
+.page {
+  background-color: #FFFFFF;
+}
 
-  .avatar-wrap {
-    position: relative;
-    margin-right: 10px;
-  }
+.avatar-wrap {
+  position: relative;
+  margin-right: 10px;
+}
 
-  .avatar {
-    width: 50px;
-    height: 50px;
-    display: block;
-    border-radius: 50%;
-  }
+.avatar {
+  width: 50px;
+  height: 50px;
+  display: block;
+  border-radius: 50%;
+}
 
-  .topic-title {
-    padding: 15px;
-  }
+.topic-title {
+  padding: 15px;
+}
 
-  .delete-button {
-    margin-top: 15px;
-  }
+.delete-button {
+  margin-top: 15px;
+}
 
-  .replyer-avatar {
-    padding: 4px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
+.replyer-avatar {
+  padding: 4px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
 
-  .reply-diff {
-    background-color: #d8d8d8;
-  }
+.reply-diff {
+  background-color: #d8d8d8;
+}
 </style>
 <template>
   <div class="page">
@@ -39,7 +39,7 @@
       <div class="weui-cells weui-cells_after-title">
         <a open-type="redirect" class="weui-cell weui-cell_access" url="/pages/users/show?id={{ topic.user.id }}">
           <div class="weui-cell__hd avatar-wrap">
-            <image class="avatar" :src="topic.user.avatar"/>
+            <image class="avatar" :src="topic.user.avatar" />
           </div>
           <div class="weui-cell__bd">
             <div>{{ topic.user.name }}</div>
@@ -78,8 +78,12 @@
               </a>
               <div class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                 <div class="weui-media-box__title">{{ reply.user.name }}</div>
-                <div class="weui-media-box__desc"><rich-text nodes="{{ reply.content }}" bindtap="tap"></rich-text></div>
-                <div class="weui-media-box__desc"><datetime-diff :datetime="reply.created_at"></datetime-diff></div>
+                <div class="weui-media-box__desc">
+                  <rich-text nodes="{{ reply.content }}" bindtap="tap"></rich-text>
+                </div>
+                <div class="weui-media-box__desc">
+                  <datetime-diff :datetime="reply.created_at"></datetime-diff>
+                </div>
               </div>
             </div>
           </div>
@@ -92,15 +96,17 @@
         </div>
       </div>
     </div>
+    <reply-create-link :topicId="topic.id"></reply-create-link>
   </div>
 </template>
 <config>
-  {
-    navigationBarTitleText: '话题详情',
-    usingComponents: {
-      "datetime-diff": "~@/components/datetime-diff"
-    }
+{
+  navigationBarTitleText: '话题详情',
+  usingComponents: {
+    "datetime-diff": "~@/components/datetime-diff",
+    "reply-create-link": "~@/components/reply-create-link"
   }
+}
 </config>
 <script>
 import wepy from '@wepy/core'
@@ -165,6 +171,10 @@ wepy.page({
   },
   onLoad(options) {
     this.loadTopic(options.id)
+
+    eventHub.$on('reply-created', (...args) => {
+      this.loadTopic(options.id)
+    })
   }
 })
 </script>

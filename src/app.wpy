@@ -1,9 +1,9 @@
 <style lang="less">
-  @import (css) './assets/style/app.wxss';
+@import (css) './assets/style/app.wxss';
 
-  .page {
-    background: #ffffff;
-  }
+.page {
+  background: #ffffff;
+}
 </style>
 
 <script>
@@ -23,42 +23,43 @@ wepy.app({
 })
 </script>
 <config>
-  {
-    pages: [
-      'pages/topics/index',
-      'pages/topics/show',
-      'pages/topics/user-index',
-      'pages/users/me',
-      'pages/users/edit',
-      'pages/users/show',
-      'pages/auth/login',
-      'pages/auth/register',
-      'pages/replies/index',
-      'pages/replies/user-index'
+{
+  pages: [
+    'pages/topics/index',
+    'pages/topics/show',
+    'pages/topics/user-index',
+    'pages/users/me',
+    'pages/users/edit',
+    'pages/users/show',
+    'pages/auth/login',
+    'pages/auth/register',
+    'pages/replies/index',
+    'pages/replies/user-index',
+    'pages/replies/create'
+  ],
+  window: {
+    backgroundTextStyle: 'light',
+    navigationBarBackgroundColor: '#fff',
+    navigationBarTitleText: 'WeChat',
+    navigationBarTextStyle: 'black'
+  },
+  tabBar: {
+    list: [
+      {
+        pagePath: 'pages/topics/index',
+        text: '首页',
+        iconPath: 'assets/images/index.png',
+        selectedIconPath: 'assets/images/index_selected.png'
+      },
+      {
+        pagePath: 'pages/users/me',
+        text: '我的',
+        iconPath: 'assets/images/user.png',
+        selectedIconPath: 'assets/images/user_selected.png'
+      }
     ],
-    window: {
-      backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
-    },
-    tabBar: {
-      list: [
-        {
-          pagePath: 'pages/topics/index',
-          text: '首页',
-          iconPath: 'assets/images/index.png',
-          selectedIconPath: 'assets/images/index_selected.png'
-        },
-        {
-          pagePath: 'pages/users/me',
-          text: '我的',
-          iconPath: 'assets/images/user.png',
-          selectedIconPath: 'assets/images/user_selected.png'
-        }
-      ],
-      color: '#707070',
-      selectedColor: '#00b5ad'
-    }
+    color: '#707070',
+    selectedColor: '#00b5ad'
   }
+}
 </config>
