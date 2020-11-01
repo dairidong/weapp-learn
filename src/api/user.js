@@ -1,5 +1,4 @@
-import { authRequest, uploadFile } from '@/utils/request'
-import { request } from '../utils/request'
+import { request, authRequest, uploadFile } from '@/utils/request'
 
 export function getCurrentUser(data) {
   return authRequest('user')
@@ -25,4 +24,8 @@ export function updateAvatar(avatar) {
 
 export function getUser(id) {
   return request('users/' + id)
+}
+
+export function getPerms() {
+  return authRequest('user/permissions')
 }
