@@ -1,5 +1,7 @@
 const path = require('path')
 var prod = process.env.NODE_ENV === 'production'
+const DefinePlugin = require('@wepy/plugin-define')
+const PluginUglifyjs = require('@wepy/plugin-uglifyjs')
 
 module.exports = {
   wpyExt: '.wpy',
@@ -28,7 +30,12 @@ module.exports = {
       ]
     }
   },
-  plugins: [],
+  plugins: [
+    DefinePlugin({
+      API_URL: prod ? '"https://weapp.liyu.wiki/api/v1/"' : '"http://larabbs.test/api/v1/"'
+    }),
+    PluginUglifyjs({})
+  ],
   appConfig: {
     noPromiseAPI: ['createSelectorQuery']
   }
