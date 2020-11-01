@@ -1,6 +1,6 @@
 import wepy from '@wepy/core'
 
-import { getNotifications } from '@/api/notification'
+import { getNotificationStats, readNotifications } from '@/api/notification'
 
 const state = {
   unreadCount: 0
@@ -18,13 +18,18 @@ const actions = {
       return
     }
 
-    const statsResponse = await getNotifications({}, false)
+    const statsResponse = await getNotificationStats({}, false)
 
     commit('setUnreadCount', statsResponse.data.unread_count)
+  },
+  async readNotifications({ commit }, params = {}) {
+    const statsResponse = await readNotifications()
+
+    commit('setUnreadCount', 0)
   }
 }
 
-// 定义mutations
+// 定义 mutations
 const mutations = {
   setUnreadCount(state, count) {
     state.unreadCount = count
