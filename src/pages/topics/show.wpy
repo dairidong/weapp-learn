@@ -175,6 +175,13 @@ wepy.page({
     eventHub.$on('reply-created', (...args) => {
       this.loadTopic(options.id)
     })
+  },
+  onShareAppMessage() {
+    return {
+      // 标题是话题标题
+      title: this.topic.title,
+      path: 'pages/topics/show?id=' + this.topic.id
+    }
   }
 })
 </script>
